@@ -5,9 +5,9 @@ import helmet from "helmet";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import redis from "redis";
-import indexRouter from "./routes/index.routes.js";
+import indexRouter from "./routes/allroutes/index.routes.js";
 import morgan from "morgan";
-import authRouter from "./routes/auth.routes.js";
+import authRouter from "./routes/allroutes/auth.routes.js";
 // import response-time from "response-time";
 
 const app = express();
