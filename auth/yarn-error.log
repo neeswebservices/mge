@@ -1,0 +1,37 @@
+Arguments: 
+  /usr/bin/node /usr/local/bin/yarn add express jsonwebtoken mongoose amqplib morgan
+
+PATH: 
+  /usr/lib64/ccache:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/var/lib/snapd/snap/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.12.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, open '/home/nws/.cache/yarn/v6/npm-depd-2.0.0-b696163cc757560d09cf22cc8fad1571b79e76df-integrity/node_modules/depd/.yarn-tarball.tgz'
+
+npm manifest: 
+  {
+    "name": "admin",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
