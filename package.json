@@ -1,7 +1,6 @@
 {
   "name": "mge",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +10,21 @@
   "license": "ISC",
   "dependencies": {
     "address": "^1.2.2",
+    "connect-flash": "^0.1.1",
+    "express-brute": "^1.0.1",
     "express-healthcheck": "^0.1.0",
+    "express-rate-limit": "^6.7.0",
+    "express-session": "^1.17.3",
     "ip": "^1.1.8",
     "typescript": "^4.9.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neeswebservices/mge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/neeswebservices/mge/issues"
+  },
+  "homepage": "https://github.com/neeswebservices/mge#readme",
+  "description": ""
 }

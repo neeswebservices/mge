@@ -43,13 +43,10 @@ export const userLogin = async (req, res, next) => {
 
         const accesstoken = createAccessToken(user.id, ACCESS_SECRET);
 
-        res.cookie('accesstoken', `Bearer ${accesstoken}`, {
-            path: '/',
-            expires: new Date(Date.now() + 900000),
-            httpOnly: false,
-        });
+        req.session.accesstoken = `Bearer ${accesstoken}`;
+        // req.session.cookie.expires = new Date(Date.now() + hour)
 
-        return res.send({ msg: 'Logged In!' });
+        return res.send(new HttpResponse(200, 'User Logged In'));
     } catch (error) {
         next(error);
     }
@@ -57,7 +54,9 @@ export const userLogin = async (req, res, next) => {
 
 export const userLogout = async (req, res, next) => {
     try {
-        await res.clearCookie('accesstoken');
+        await req.session.destroy(function err(err) {
+            throw err;
+        });
         return res.send(new HttpResponse(200, 'User Logged out!'));
     } catch (error) {
         throw error;
