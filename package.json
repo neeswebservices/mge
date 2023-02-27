@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "address": "^1.2.2",
+    "express-healthcheck": "^0.1.0",
+    "ip": "^1.1.8",
     "typescript": "^4.9.5"
   }
 }

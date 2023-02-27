@@ -36,7 +36,6 @@ export const userLogin = async (req, res, next) => {
         const { username, password } = req.body;
 
         if (!username || !password) return next(createError(400, 'Invalid request!'));
-        l;
         const user = await SAdmin.findOne({ username }).select('+password');
         if (!user) return next(createError(403, "User doesn't exist!"));
 
