@@ -1,0 +1,77 @@
+version: '3.9'
+
+services:
+    mongo-admin:
+        container_name: admin-db
+        image: mongo
+        ports:
+            - '27017:27017'
+        volumes:
+            - data:/data/db
+        restart: unless-stopped
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=mge
+            - MONGO_INITDB_ROOT_PASSWORD=mge
+
+    authdb:
+        container_name: auth-db
+        image: mongo
+        ports:
+            - '27018:27017'
+        volumes:
+            - db:/data/db
+        restart: unless-stopped
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=mge
+            - MONGO_INITDB_ROOT_PASSWORD=mge
+
+    admin:
+        container_name: admin
+        image: admin-staged
+        build: ./admin
+        ports:
+            - '8001:8001'
+        volumes:
+            - ./admin:/app
+            - /app/node_modules
+        depends_on:
+            - mongo-admin
+        environment:
+            - PORT=8001
+            - MONGO_INITDB_ROOT_USERNAME=mge
+            - MONGO_INITDB_ROOT_PASSWORD=mge
+
+    auth:
+        container_name: auth
+        image: auth-staged
+        build: ./auth
+        ports:
+            - '8002:8002'
+        depends_on:
+            - authdb
+        volumes:
+            - ./auth:/app
+            - /app/node_modules
+        environment:
+            - PORT=8001
+            - MONGO_INITDB_ROOT_USERNAME=mge
+            - MONGO_INITDB_ROOT_PASSWORD=mge
+
+    # client:
+    #     container_name: client
+    #     image: client:v1
+    #     build: ./client
+    #     ports:
+    #         - '3000:3000'
+    #     volumes:
+    #         - ./client/src:/app/src
+    #     environment:
+    #         - WATCHPACK_POLLING=true
+    #     depends_on:
+    #         - api
+    #     stdin_open: true
+    #     tty: true
+
+volumes:
+    data:
+    db:
