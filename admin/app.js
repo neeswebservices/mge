@@ -6,7 +6,6 @@ import cookieParser from 'cookie-parser';
 import redis from 'redis';
 import indexRouter from './routes/index.routes.js';
 import morgan from 'morgan';
-import authRouter from './routes/allroutes/auth.routes.js';
 import flash from 'connect-flash';
 import { createError } from './config/error.js';
 import healthcheck from 'express-healthcheck';
@@ -14,8 +13,8 @@ import mongoose from 'mongoose';
 import os from 'os';
 import address from 'address';
 import responseTime from 'response-time';
-import { bruteforce } from './helpers/express.brute.js';
-import { adminLimiter } from './limiters/admin.limiter.js';
+import { bruteforce } from './services/express.brute.js';
+import { adminLimiter } from './services/admin.limiter.js';
 import session from 'express-session';
 
 const app = express();

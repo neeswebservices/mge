@@ -53,7 +53,7 @@ services:
             - ./auth:/app
             - /app/node_modules
         environment:
-            - PORT=8001
+            - PORT=8002
             - MONGO_INITDB_ROOT_USERNAME=mge
             - MONGO_INITDB_ROOT_PASSWORD=mge
 

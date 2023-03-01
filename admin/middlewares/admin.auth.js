@@ -2,7 +2,7 @@ import { isValidObjectId } from 'mongoose';
 import { createError } from '../config/error.js';
 import { HttpResponse } from '../config/HttpResponse.js';
 import { ACCESS_SECRET } from '../env.js';
-import { getTokenData } from '../helpers/functions.js';
+import { getTokenData } from '../services/functions.js';
 import SAdmin from '../models/user.model.js';
 import { logger } from '../app.js';
 

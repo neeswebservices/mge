@@ -1,9 +1,9 @@
 import bcrypt from 'bcryptjs';
-import { createError } from '../config/error.js';
-import { HttpResponse } from '../config/HttpResponse.js';
-import { ACCESS_SECRET } from '../env.js';
-import { createAccessToken } from '../helpers/functions.js';
-import SAdmin from '../models/user.model.js';
+import { createError } from '../../config/error.js';
+import { HttpResponse } from '../../config/HttpResponse.js';
+import { ACCESS_SECRET } from '../../env.js';
+import { createAccessToken } from '../../services/functions.js';
+import SAdmin from '../../models/user.model.js';
 
 export const userRegister = async (req, res, next) => {
     try {
