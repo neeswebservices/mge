@@ -1,12 +1,12 @@
 import app, { logger } from './app.js';
 import { createError } from './config/error.js';
 import { connectMongoDB } from './config/mongoose.config.js';
-import { PORT, URI } from './env.js';
+import { MONGOURI, PORT, URI } from './env.js';
 import http from 'http';
 
 const server = http.createServer(app);
 
-await connectMongoDB(URI)
+await connectMongoDB(MONGOURI)
     .then(() => {
         server.listen(PORT, () => {
             logger(`server listening at port ${PORT}`);

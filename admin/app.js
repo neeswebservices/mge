@@ -75,7 +75,7 @@ app.get('*', (req, res, next) => {
 
 app.use((err, req, res, next) => {
     if (err) {
-        return res.status(err?.status || 500).send({
+        return res.status(err?.status ?? 500).send({
             msg: err?.message ?? 'Something went wrong!',
             OK: false,
             success: false,

@@ -5,6 +5,9 @@ const leaveSchema = new mongoose.Schema({
         type: String,
         default: 'Leave',
     },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+    },
     casualLeaves: [
         {
             title: {
