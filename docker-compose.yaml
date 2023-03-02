@@ -5,7 +5,7 @@ services:
         container_name: admin-db
         image: mongo
         ports:
-            - '27019:27017'
+            - '27020:27017'
         volumes:
             - data:/data/db
         restart: unless-stopped
@@ -13,17 +13,17 @@ services:
             - MONGO_INITDB_ROOT_USERNAME=mge
             - MONGO_INITDB_ROOT_PASSWORD=mge
 
-    authdb:
-        container_name: auth-db
-        image: mongo
-        ports:
-            - '27018:27017'
-        volumes:
-            - db:/data/db
-        restart: unless-stopped
-        environment:
-            - MONGO_INITDB_ROOT_USERNAME=mge
-            - MONGO_INITDB_ROOT_PASSWORD=mge
+    # authdb:
+    #     container_name: auth-db
+    #     image: mongo
+    #     ports:
+    #         - '27018:27017'
+    #     volumes:
+    #         - db:/data/db
+    #     restart: unless-stopped
+    #     environment:
+    #         - MONGO_INITDB_ROOT_USERNAME=mge
+    #         - MONGO_INITDB_ROOT_PASSWORD=mge
 
     admin:
         container_name: admin
@@ -41,21 +41,21 @@ services:
             - MONGO_INITDB_ROOT_USERNAME=mge
             - MONGO_INITDB_ROOT_PASSWORD=mge
 
-    auth:
-        container_name: auth
-        image: auth-staged
-        build: ./auth
-        ports:
-            - '8002:8002'
-        depends_on:
-            - authdb
-        volumes:
-            - ./auth:/app
-            - /app/node_modules
-        environment:
-            - PORT=8002
-            - MONGO_INITDB_ROOT_USERNAME=mge
-            - MONGO_INITDB_ROOT_PASSWORD=mge
+    # auth:
+    #     container_name: auth
+    #     image: auth-staged
+    #     build: ./auth
+    #     ports:
+    #         - '8002:8002'
+    #     depends_on:
+    #         - authdb
+    #     volumes:
+    #         - ./auth:/app
+    #         - /app/node_modules
+    #     environment:
+    #         - PORT=8002
+    #         - MONGO_INITDB_ROOT_USERNAME=mge
+    #         - MONGO_INITDB_ROOT_PASSWORD=mge
 
     # client:
     #     container_name: client
@@ -74,4 +74,3 @@ services:
 
 volumes:
     data:
-    db:

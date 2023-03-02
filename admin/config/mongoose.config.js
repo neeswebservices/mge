@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 export const connectMongoDB = async (URI, options = {}) => {
-    mongoose.set('strictQuery', true);
+    mongoose.set('strictQuery', false);
     await mongoose.connect(URI, options).then(() => {
         console.log(`MongoDB conected to ${URI.split('/')[2]} ✅`);
     });

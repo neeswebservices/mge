@@ -18,7 +18,6 @@ export const createSystem = (req, res, next) => {
         if (logo && !validateUrl(logo)) return next(createError(400, 'Invalid logo url!'));
 
         return res.send('hello');
-        xx;
     } catch (error) {
         throw error;
     }

@@ -20,17 +20,24 @@ import session from 'express-session';
 const app = express();
 export const store = new session.MemoryStore();
 
-export const logger = console.log.bind(console); // Later i'll use Winston!
+app.use(
+    session({
+        resave: false,
+        secret: 'neeswebservices',
+        cookie: { maxAge: 3600000 },
+    })
+);
 
 app.use(
     session({
-        secret: 'aitc@monitor',
+        secret: 'neeswebservices',
         resave: false,
         saveUninitialized: true,
         cookie: { maxAge: 3600000 },
         // store,
     })
 );
+
 // cookie: { secure: true, path: '/', maxAge: new Date(Date.now() + 900000), httpOnly: false },
 
 app.use(compression());
